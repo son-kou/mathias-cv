@@ -1,0 +1,683 @@
+.contact {
+  position: relative;
+  overflow: clip;
+  background: var(--ink);
+  color: var(--on-dark);
+  isolation: isolate;
+}
+
+/* Et varmt skær nederst – som lys fra en café en sen eftermiddag. */
+.contact::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -30%;
+  z-index: -1;
+  width: min(1200px, 140%);
+  height: 80%;
+  background: radial-gradient(closest-side, rgb(181 96 58 / 0.24), transparent);
+  translate: -50% 0;
+  pointer-events: none;
+}
+
+.contact .eyebrow {
+  color: var(--petrol-light);
+}
+
+.contact .eyebrow__num {
+  color: var(--copper-light);
+}
+
+.contact .section-title {
+  color: var(--cream);
+}
+
+.contact .section-lead {
+  color: var(--on-dark-muted);
+}
+
+.contact :focus-visible {
+  outline-color: var(--copper-light);
+}
+
+.contact__emoji {
+  display: inline-block;
+  font-size: 0.78em;
+}
+
+/* ── Scenen: telefon · kop · kuvert på en fælles "bordkant" ──────────── */
+
+.contact__scene {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  column-gap: clamp(1rem, 4vw, 3.5rem);
+  max-width: 1040px;
+  margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+}
+
+.contact__scene::before {
+  content: '';
+  grid-column: 1 / -1;
+  grid-row: 1;
+  align-self: end;
+  height: 2px;
+  margin-bottom: 8px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(233 227 216 / 0.22) 12%,
+    rgb(233 227 216 / 0.22) 88%,
+    transparent
+  );
+}
+
+.contact-card--phone {
+  grid-column: 1;
+}
+
+.contact__cup {
+  grid-column: 2;
+}
+
+.contact-card--mail {
+  grid-column: 3;
+}
+
+.contact-card,
+.contact__cup {
+  grid-row: 1 / span 3;
+  display: grid;
+  grid-template-rows: subgrid;
+  justify-items: center;
+  margin: 0;
+  text-align: center;
+}
+
+.contact-card__link {
+  grid-row: 1 / span 2;
+  display: grid;
+  grid-template-rows: subgrid;
+  justify-items: center;
+  padding: 0 0.75rem 0.5rem;
+  border-radius: 22px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-card__art {
+  position: relative;
+  display: block;
+  align-self: end;
+  width: min(100%, 230px);
+  padding-top: 3.25rem;
+}
+
+.contact-card__art svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.contact-card__bubble {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 0.5rem 0.85rem;
+  border-radius: 12px;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 800;
+  white-space: nowrap;
+  opacity: 0;
+  translate: -50% 0;
+  transform: translateY(10px) scale(0.95);
+  transition:
+    opacity 0.3s,
+    transform 0.4s var(--ease-out);
+  box-shadow: 0 10px 24px -10px rgb(0 0 0 / 0.5);
+}
+
+.contact-card__bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: inherit;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.contact-card__link:hover .contact-card__bubble,
+.contact-card__link:focus-visible .contact-card__bubble {
+  opacity: 1;
+  transform: none;
+}
+
+.contact-card__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-card__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+  color: var(--cream);
+  font: 400 1.7rem/1.1 var(--font-serif);
+}
+
+.contact-card__title .icon {
+  color: var(--copper-light);
+  font-size: 0.7em;
+}
+
+.contact-card__value {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--copper-light);
+  font-size: 1.02rem;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: rgb(239 184 149 / 0.35);
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color 0.25s;
+}
+
+.contact-card__link:hover .contact-card__value {
+  text-decoration-color: currentColor;
+}
+
+.copy-button {
+  grid-row: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  margin-top: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgb(233 227 216 / 0.22);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--on-dark-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.copy-button:hover {
+  background: rgb(233 227 216 / 0.08);
+  color: var(--cream);
+}
+
+.copy-button.is-copied {
+  border-color: var(--petrol-light);
+  color: var(--petrol-light);
+}
+
+/* ── Koppen ──────────────────────────────────────────────────────────── */
+
+.contact__cup .cup {
+  align-self: end;
+  width: min(100%, 290px);
+}
+
+.contact__cup figcaption {
+  grid-row: 2 / span 2;
+  max-width: 25ch;
+  margin-top: 1.4rem;
+  color: var(--on-dark-muted);
+  font: italic 400 1.2rem/1.4 var(--font-serif);
+}
+
+.cup {
+  --lean: 0;
+  position: relative;
+}
+
+.cup svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.cup__steam-lean {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: skewX(calc(var(--lean) * 16deg));
+  transition: transform 1.1s var(--ease-out);
+}
+
+.cup__steam {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: steam-sway 6s ease-in-out infinite alternate;
+}
+
+/* Hver dampstribe stiger, breder sig og forsvinder – forskudt, så det ser organisk ud. */
+.cup__steam path {
+  fill: none;
+  stroke: #f4ede1;
+  stroke-width: 8;
+  stroke-linecap: round;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: steam-rise 4.4s ease-in-out infinite;
+}
+
+.cup__steam path:nth-child(2) {
+  stroke-width: 9;
+  animation-duration: 5.2s;
+  animation-delay: -1.7s;
+}
+
+.cup__steam path:nth-child(3) {
+  animation-duration: 4.8s;
+  animation-delay: -3.1s;
+}
+
+@keyframes steam-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scaleX(0.9);
+  }
+  30% {
+    opacity: 0.8;
+  }
+  65% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-22px) scaleX(1.15);
+  }
+}
+
+@keyframes steam-sway {
+  from {
+    transform: translateX(-3px) skewX(3deg);
+  }
+  to {
+    transform: translateX(3px) skewX(-3deg);
+  }
+}
+
+.cup__saucer {
+  fill: #e8dfcf;
+}
+
+.cup__saucer-well {
+  fill: #d6c9b3;
+}
+
+.cup__handle {
+  fill: none;
+  stroke: #f4eee3;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.cup__body {
+  fill: #f6f0e5;
+}
+
+.cup__shade {
+  fill: #e2d5c0;
+}
+
+.cup__band {
+  fill: none;
+  stroke: var(--copper);
+  stroke-width: 6;
+}
+
+.cup__band--thin {
+  stroke-width: 1.5;
+  opacity: 0.75;
+}
+
+.cup__shine {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.8);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.cup__rim {
+  fill: #e9dfcf;
+}
+
+.cup__coffee {
+  fill: #4a2d1e;
+}
+
+.cup__art {
+  fill: #c79a76;
+  opacity: 0.9;
+}
+
+/* ── Telefonen ───────────────────────────────────────────────────────── */
+
+.art-shadow {
+  fill: rgb(0 0 0 / 0.28);
+}
+
+.phone__shake {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.phone__body {
+  fill: #c3663c;
+}
+
+.phone__body-light {
+  fill: #d98256;
+  opacity: 0.5;
+}
+
+.phone__prong {
+  stroke: #8d4325;
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+.phone__dial {
+  fill: #f5efe4;
+}
+
+.phone__hole {
+  fill: #9a4a2a;
+}
+
+.phone__center {
+  fill: #e5dac8;
+}
+
+.phone__stop {
+  fill: none;
+  stroke: #e5dac8;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.phone__cord {
+  fill: none;
+  stroke: #8d4325;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.phone__handset {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.phone__handset-shape {
+  fill: #a3502d;
+}
+
+.phone__handset-shine {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.25);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.phone__ring path {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+.contact-card--phone .contact-card__link:hover .phone__shake,
+.contact-card--phone .contact-card__link:focus-visible .phone__shake {
+  animation: ring 0.55s ease-in-out 2;
+}
+
+.contact-card--phone .contact-card__link:hover .phone__handset,
+.contact-card--phone .contact-card__link:focus-visible .phone__handset {
+  transform: translateY(-9px) rotate(-5deg);
+}
+
+.contact-card--phone .contact-card__link:hover .phone__ring path,
+.contact-card--phone .contact-card__link:focus-visible .phone__ring path {
+  animation: ring-wave 1.1s ease-out infinite;
+}
+
+.phone__ring path:nth-child(2) {
+  animation-delay: 0.18s !important;
+}
+
+@keyframes ring {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(-5deg);
+  }
+  40% {
+    transform: rotate(5deg);
+  }
+  60% {
+    transform: rotate(-3.5deg);
+  }
+  80% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes ring-wave {
+  0% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ── Kuverten ────────────────────────────────────────────────────────── */
+
+.envelope__back {
+  fill: #d8c7ab;
+}
+
+.envelope__flap-open {
+  fill: #e4d5bc;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scaleY(0);
+  transition: transform 0.26s ease-in 0.2s;
+}
+
+.envelope__letter {
+  transition: transform 0.45s var(--ease-out);
+}
+
+.envelope__paper {
+  fill: #fffdf8;
+}
+
+.envelope__greeting {
+  fill: var(--ink);
+  font: italic 400 16px var(--font-serif);
+}
+
+.envelope__lines {
+  fill: none;
+  stroke: #d3c6b0;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.envelope__heart {
+  fill: var(--copper);
+}
+
+.envelope__front {
+  fill: #f2e8d8;
+}
+
+.envelope__fold {
+  fill: none;
+  stroke: #dccdb4;
+  stroke-width: 1.5;
+}
+
+.envelope__stripe-base {
+  fill: #f2e8d8;
+}
+
+.envelope__stripe-a {
+  fill: var(--copper);
+}
+
+.envelope__stripe-b {
+  fill: var(--navy-accent);
+}
+
+.envelope__flap-closed {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  transition: transform 0.26s ease-out 0.46s;
+}
+
+.envelope__flap {
+  fill: #ebdfcb;
+  stroke: #d6c6ab;
+  stroke-width: 1;
+}
+
+.envelope__seal {
+  fill: var(--copper);
+}
+
+.envelope__seal-ring {
+  fill: none;
+  stroke: #e19a72;
+  stroke-width: 1.5;
+}
+
+.envelope__seal-letter {
+  fill: #fbe9dc;
+  font: italic 400 16px var(--font-serif);
+  text-anchor: middle;
+}
+
+.contact-card--mail .contact-card__link:hover .envelope__flap-closed,
+.contact-card--mail .contact-card__link:focus-visible .envelope__flap-closed {
+  transform: scaleY(0);
+  transition: transform 0.24s ease-in 0s;
+}
+
+.contact-card--mail .contact-card__link:hover .envelope__flap-open,
+.contact-card--mail .contact-card__link:focus-visible .envelope__flap-open {
+  transform: scaleY(1);
+  transition: transform 0.3s ease-out 0.22s;
+}
+
+.contact-card--mail .contact-card__link:hover .envelope__letter,
+.contact-card--mail .contact-card__link:focus-visible .envelope__letter {
+  transform: translateY(-50px);
+  transition: transform 0.65s var(--ease-out) 0.42s;
+}
+
+/* ── LinkedIn og pendlerkort ─────────────────────────────────────────── */
+
+.contact__extras {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 2rem;
+  margin-top: clamp(2.75rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgb(233 227 216 / 0.24);
+  border-radius: 999px;
+  color: var(--cream);
+  font-size: 0.92rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.linkedin-link:hover {
+  background: rgb(233 227 216 / 0.08);
+}
+
+.contact__commute {
+  margin: 0;
+  color: var(--on-dark-muted);
+  font: italic 400 1.2rem/1.4 var(--font-serif);
+}
+
+/* ── Mindre skærme ───────────────────────────────────────────────────── */
+
+@media (max-width: 760px) {
+  .contact__scene {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    row-gap: 3rem;
+  }
+
+  .contact__scene::before {
+    display: none;
+  }
+
+  .contact-card,
+  .contact__cup,
+  .contact-card__link {
+    grid-row: auto;
+    grid-column: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact__cup {
+    order: -1;
+  }
+
+  .contact__cup .cup {
+    width: min(70vw, 240px);
+  }
+
+  .contact-card__art {
+    width: min(58vw, 200px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cup__steam path {
+    animation-name: none;
+    opacity: 0.45;
+  }
+}

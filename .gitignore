@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+coverage
+playwright-report
+test-results
+*.local
+.DS_Store
+
+# Mathias' kilde-CV'er (bl.a. målrettede ansøgninger) skal ikke offentliggøres.
+# Det generelle CV, der kan downloades fra siden, ligger i public/cv/.
+cv-files/

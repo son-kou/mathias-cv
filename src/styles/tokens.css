@@ -1,0 +1,54 @@
+/*
+ * Designsystem: varm creme, dyb marine, dæmpet petrol og kobber.
+ * Alle tekstfarver er tjekket for kontrast (WCAG AA) mod de baggrunde, de bruges på.
+ */
+:root {
+  --cream: #f5efe4;
+  --cream-deep: #ece3d3;
+  --paper: #faf6ef;
+  --paper-pure: #fffdf9;
+  --line: #e0d5c2;
+  --line-strong: #cdbfa7;
+
+  --ink: #16213a; /* overskrifter */
+  --ink-soft: #2b3550;
+  --text: #2a3142; /* brødtekst */
+  --muted: #5a6171; /* sekundær tekst – 5,3:1 på creme */
+
+  --petrol: #1e5b57; /* primær accent – 6,8:1 på creme */
+  --petrol-strong: #164744;
+  --petrol-tint: #dce8e3;
+  --petrol-light: #8fcbbd; /* på marine baggrund */
+
+  --copper: #b5603a; /* sekundær accent – grafik og store elementer */
+  --copper-ink: #97462a; /* kobber til tekst – 5,6:1 på creme */
+  --copper-tint: #f3e2d5;
+  --copper-light: #efb895; /* på marine baggrund */
+
+  --navy-accent: #2f4b7c;
+  --on-dark: #e9e3d8;
+  --on-dark-muted: #c6c0b3;
+
+  /* Kategorier: arbejde, uddannelse, udlandsophold og base */
+  --kind-work: var(--copper);
+  --kind-education: var(--petrol);
+  --kind-international: var(--navy-accent);
+  --kind-base: var(--ink);
+
+  --font-sans: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Instrument Serif', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+
+  --radius-s: 10px;
+  --radius-m: 18px;
+  --radius-l: 26px;
+  --shadow-s: 0 1px 2px rgb(22 33 58 / 0.05), 0 3px 10px -2px rgb(22 33 58 / 0.06);
+  --shadow-m: 0 2px 6px rgb(22 33 58 / 0.05), 0 16px 36px -12px rgb(22 33 58 / 0.18);
+  --shadow-l: 0 36px 70px -28px rgb(22 33 58 / 0.4);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --header-h: 72px;
+  --container: 1220px;
+  --gutter: clamp(1rem, 4vw, 3rem);
+}
